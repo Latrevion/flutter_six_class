@@ -336,37 +336,51 @@ class MyApp extends StatelessWidget {
   // }
 
   //3.3.5.1 stack position
-  Widget getBody() {
-    return Container(
-      width: 500,
-      height: 500,
-      color: Colors.grey,
-      child: Stack(
-        children: [
-          Positioned(
-              top: 100,
-              child: Container(
-                width: 100,
-                height: 100,
-                color: Colors.red,
-              )),
-          Positioned(
-              right: 100,
-              child: Container(
-                width: 100,
-                height: 100,
-                color: Colors.blue,
-              )),
-          Positioned(
-              top: 100,
-              left: 300,
-              child: Container(
-                width: 100,
-                height: 100,
-                color: Colors.orange,
-              ))
-        ],
-      ),
-    );
-  }
+  // Widget getBody() {
+  //   return Container(
+  //     width: 500,
+  //     height: 500,
+  //     color: Colors.grey,
+  //     child: Stack(
+  //       children: [
+  //         Positioned(
+  //             top: 100,
+  //             child: Container(
+  //               width: 100,
+  //               height: 100,
+  //               color: Colors.red,
+  //             )),
+  //         Positioned(
+  //             right: 100,
+  //             child: Container(
+  //               width: 100,
+  //               height: 100,
+  //               color: Colors.blue,
+  //             )),
+  //         Positioned(
+  //             top: 100,
+  //             left: 300,
+  //             child: Container(
+  //               width: 100,
+  //               height: 100,
+  //               color: Colors.orange,
+  //             ))
+  //       ],
+  //     ),
+  //   );
+  // }
+
+
+// 3.3.6 align  center
+Widget getBody(){
+  return Container(
+    height: 120,
+    width: 120,
+    color: Colors.orange,
+    child: const Align(
+      alignment: Alignment.topRight,
+      child: FlutterLogo(),
+    ),
+  );
+}
 }

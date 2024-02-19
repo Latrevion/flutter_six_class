@@ -370,17 +370,30 @@ class MyApp extends StatelessWidget {
   //   );
   // }
 
-
 // 3.3.6 align  center
-Widget getBody(){
-  return Container(
-    height: 120,
-    width: 120,
-    color: Colors.orange,
-    child: const Align(
-      alignment: Alignment.topRight,
-      child: FlutterLogo(),
-    ),
-  );
-}
+// Widget getBody(){
+//   return Container(
+//     height: 120,
+//     width: 120,
+//     color: Colors.orange,
+//     child: const Align(
+//       alignment: Alignment.topRight,
+//       child: FlutterLogo(),
+//     ),
+//   );
+// }
+
+  //3.3.7 RotateBox
+  Widget getBody() {
+    return Padding(
+      padding: const EdgeInsets.all(50.0),
+      child: RotatedBox(
+          quarterTurns: 1,
+          child: Container(
+            height: 199,
+            width: 120,
+            color: Colors.blue,
+          )),
+    );
+  }
 }

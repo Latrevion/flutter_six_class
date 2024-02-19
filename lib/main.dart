@@ -314,24 +314,59 @@ class MyApp extends StatelessWidget {
   // }
 
   //3.3.5
-  Widget getBody() {
-    final ColorList = [
-      Colors.green,
-      Colors.red,
-      Colors.orange,
-      Colors.black,
-      Colors.blue,
-      Colors.yellow,
-    ];
+  // Widget getBody() {
+  //   final ColorList = [
+  //     Colors.green,
+  //     Colors.red,
+  //     Colors.orange,
+  //     Colors.black,
+  //     Colors.blue,
+  //     Colors.yellow,
+  //   ];
+  //
+  //   return GridView.builder(
+  //     shrinkWrap: true,
+  //     itemCount: 6,
+  //     gridDelegate:
+  //         const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+  //     itemBuilder: (context, index) {
+  //       return Container(color: ColorList[index]);
+  //     },
+  //   );
+  // }
 
-    return GridView.builder(
-      shrinkWrap: true,
-      itemCount: 6,
-      gridDelegate:
-          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-      itemBuilder: (context, index) {
-        return Container(color: ColorList[index]);
-      },
+  //3.3.5.1 stack position
+  Widget getBody() {
+    return Container(
+      width: 500,
+      height: 500,
+      color: Colors.grey,
+      child: Stack(
+        children: [
+          Positioned(
+              top: 100,
+              child: Container(
+                width: 100,
+                height: 100,
+                color: Colors.red,
+              )),
+          Positioned(
+              right: 100,
+              child: Container(
+                width: 100,
+                height: 100,
+                color: Colors.blue,
+              )),
+          Positioned(
+              top: 100,
+              left: 300,
+              child: Container(
+                width: 100,
+                height: 100,
+                color: Colors.orange,
+              ))
+        ],
+      ),
     );
   }
 }

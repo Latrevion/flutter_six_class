@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -200,8 +202,63 @@ class MyApp extends StatelessWidget {
 //   }
 
 // //3.3.3.2
-  final List<String> entries = <String>['A', 'B', 'C','D','E', 'F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-  final List<int> colorCodes =    <int>[600, 500, 400,400,400,400,400, 400, 400, 400,400,400,400,400,400,400,400,400,400,400,400,400,400,400,400,400,400];
+  final List<String> entries = <String>[
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ];
+  final List<int> colorCodes = <int>[
+    600,
+    500,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400
+  ];
 
   // Widget getBody() {
   //   return ListView.builder(
@@ -218,18 +275,41 @@ class MyApp extends StatelessWidget {
   // }
 
 //3.3.3.3
+//   Widget getBody() {
+//     return ListView.separated(
+//       separatorBuilder: (BuildContext context, int index) => const Divider(),
+//         padding: const EdgeInsets.all(8),
+//         itemCount: entries.length,
+//         cacheExtent:1,
+//         itemBuilder: (BuildContext context, int index) {
+//           return Container(
+//             height: 150,
+//             color: Colors.amber[colorCodes[index]],
+//             child: Center(child: Text('Entry ${entries[index]}')),
+//           );
+//         });
+//   }
+
+  //3.3.4
   Widget getBody() {
-    return ListView.separated(
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
-        padding: const EdgeInsets.all(8),
-        itemCount: entries.length,
-        cacheExtent:1,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: 150,
-            color: Colors.amber[colorCodes[index]],
-            child: Center(child: Text('Entry ${entries[index]}')),
-          );
-        });
+    var listItem = List.generate(
+        13,
+        (index) => Container(
+              width: 60,
+              height: 30,
+              color: Color.fromRGBO(
+                  Random().nextInt(256),
+                  Random().nextInt(256),
+                  Random().nextInt(256),
+                  1
+              ),
+            ));
+
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 10,
+      runSpacing: 10,
+      children: listItem,
+    );
   }
 }

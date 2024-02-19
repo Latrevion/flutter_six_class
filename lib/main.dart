@@ -290,26 +290,48 @@ class MyApp extends StatelessWidget {
 //         });
 //   }
 
-  //3.3.4
-  Widget getBody() {
-    var listItem = List.generate(
-        13,
-        (index) => Container(
-              width: 60,
-              height: 30,
-              color: Color.fromRGBO(
-                  Random().nextInt(256),
-                  Random().nextInt(256),
-                  Random().nextInt(256),
-                  1
-              ),
-            ));
+  // //3.3.4
+  // Widget getBody() {
+  //   var listItem = List.generate(
+  //       13,
+  //       (index) => Container(
+  //             width: 60,
+  //             height: 30,
+  //             color: Color.fromRGBO(
+  //                 Random().nextInt(256),
+  //                 Random().nextInt(256),
+  //                 Random().nextInt(256),
+  //                 1
+  //             ),
+  //           ));
+  //
+  //   return Wrap(
+  //     alignment: WrapAlignment.center,
+  //     spacing: 10,
+  //     runSpacing: 10,
+  //     children: listItem,
+  //   );
+  // }
 
-    return Wrap(
-      alignment: WrapAlignment.center,
-      spacing: 10,
-      runSpacing: 10,
-      children: listItem,
+  //3.3.5
+  Widget getBody() {
+    final ColorList = [
+      Colors.green,
+      Colors.red,
+      Colors.orange,
+      Colors.black,
+      Colors.blue,
+      Colors.yellow,
+    ];
+
+    return GridView.builder(
+      shrinkWrap: true,
+      itemCount: 6,
+      gridDelegate:
+          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      itemBuilder: (context, index) {
+        return Container(color: ColorList[index]);
+      },
     );
   }
 }

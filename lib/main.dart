@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
 }
-const  descTextStyle =  TextStyle(
+
+const descTextStyle = TextStyle(
     color: Colors.black,
     fontWeight: FontWeight.w800,
     fontFamily: "Roboto",
     letterSpacing: 0.5,
     fontSize: 18,
-    height: 2
-);
+    height: 2);
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -108,73 +108,94 @@ class MyApp extends StatelessWidget {
   //   );
   // }
 
+  //3.3.2.4
+  // Widget getBody() {
+  //   return Column(
+  //     children: [
+  //       line1,
+  //       const SizedBox(height: 20,),
+  //       line2
+  //     ],
+  //   );
+  // }
+  //
+  // final line1 =
+  //     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+  //   Row(
+  //     mainAxisSize: MainAxisSize.min,
+  //     children: [
+  //       Icon(Icons.star, color: Colors.green[500]),
+  //       Icon(Icons.star, color: Colors.green[500]),
+  //       Icon(Icons.star, color: Colors.green[500]),
+  //       const Icon(Icons.star, color: Colors.black),
+  //       const Icon(Icons.star, color: Colors.black),
+  //       const Text(
+  //         '170 Reviews',
+  //         style: TextStyle(
+  //           color: Colors.black,
+  //           fontWeight: FontWeight.w800,
+  //           fontFamily: "Roboto",
+  //           letterSpacing: 0.5,
+  //           fontSize: 20,
+  //         ),
+  //       )
+  //     ],
+  //   )
+  // ]);
+  //
+  //
+  //
+  // final line2= DefaultTextStyle.merge(
+  //     style:  descTextStyle,
+  //   child:Container(
+  //     padding: const EdgeInsets.all(20.0),
+  //     child:Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //       children: [
+  //         Column(
+  //           children: [
+  //             Icon(Icons.kitchen,color:Colors.green),
+  //             const Text("PREP:"),
+  //             const Text("25 min"),
+  //           ],
+  //         ),
+  //         Column(
+  //           children: [
+  //             Icon(Icons.kitchen,color:Colors.green),
+  //             const Text("COOK:"),
+  //             const Text("1 hr"),
+  //           ],
+  //         ),
+  //         Column(
+  //           children: [
+  //             Icon(Icons.kitchen,color:Colors.green),
+  //             const Text("FEEDS:"),
+  //             const Text("4-6"),
+  //           ],
+  //         ),
+  //       ],
+  //     )
+  //   )
+  // );
+
+//3.3.3
   Widget getBody() {
-    return Column(
-      children: [
-        line1,
-        const SizedBox(height: 20,),
-        line2
-      ],
-    );
+    return ListView(padding: const EdgeInsets.all(8), children: <Widget>[
+      Container(
+        height: 50,
+        color: Colors.amber[600],
+        child: const Center(child: Text('Entry A')),
+      ),
+      Container(
+        height: 50,
+        color: Colors.amber[500],
+        child: const Center(child: Text('Entry B')),
+      ),
+      Container(
+        height: 50,
+        color: Colors.amber[400],
+        child: const Center(child: Text('Entry C')),
+      ),
+    ]);
   }
-
-  final line1 =
-      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-    Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(Icons.star, color: Colors.green[500]),
-        Icon(Icons.star, color: Colors.green[500]),
-        Icon(Icons.star, color: Colors.green[500]),
-        const Icon(Icons.star, color: Colors.black),
-        const Icon(Icons.star, color: Colors.black),
-        const Text(
-          '170 Reviews',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w800,
-            fontFamily: "Roboto",
-            letterSpacing: 0.5,
-            fontSize: 20,
-          ),
-        )
-      ],
-    )
-  ]);
-
-
-
-  final line2= DefaultTextStyle.merge(
-      style:  descTextStyle,
-    child:Container(
-      padding: const EdgeInsets.all(20.0),
-      child:Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-            children: [
-              Icon(Icons.kitchen,color:Colors.green),
-              const Text("PREP:"),
-              const Text("25 min"),
-            ],
-          ),
-          Column(
-            children: [
-              Icon(Icons.kitchen,color:Colors.green),
-              const Text("COOK:"),
-              const Text("1 hr"),
-            ],
-          ),
-          Column(
-            children: [
-              Icon(Icons.kitchen,color:Colors.green),
-              const Text("FEEDS:"),
-              const Text("4-6"),
-            ],
-          ),
-        ],
-      )
-    )
-  );
-
 }

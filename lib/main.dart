@@ -178,24 +178,42 @@ class MyApp extends StatelessWidget {
   //   )
   // );
 
-//3.3.3
+// //3.3.3.1
+//   Widget getBody() {
+//     return ListView(padding: const EdgeInsets.all(8), children: <Widget>[
+//       Container(
+//         height: 50,
+//         color: Colors.amber[600],
+//         child: const Center(child: Text('Entry A')),
+//       ),
+//       Container(
+//         height: 50,
+//         color: Colors.amber[500],
+//         child: const Center(child: Text('Entry B')),
+//       ),
+//       Container(
+//         height: 50,
+//         color: Colors.amber[400],
+//         child: const Center(child: Text('Entry C')),
+//       ),
+//     ]);
+//   }
+
+// //3.3.3.2
+  final List<String> entries = <String>['A', 'B', 'C','D','E', 'F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  final List<int> colorCodes =    <int>[600, 500, 400,400,400,400,400, 400, 400, 400,400,400,400,400,400,400,400,400,400,400,400,400,400,400,400,400,400];
+
   Widget getBody() {
-    return ListView(padding: const EdgeInsets.all(8), children: <Widget>[
-      Container(
-        height: 50,
-        color: Colors.amber[600],
-        child: const Center(child: Text('Entry A')),
-      ),
-      Container(
-        height: 50,
-        color: Colors.amber[500],
-        child: const Center(child: Text('Entry B')),
-      ),
-      Container(
-        height: 50,
-        color: Colors.amber[400],
-        child: const Center(child: Text('Entry C')),
-      ),
-    ]);
+    return ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: entries.length,
+        cacheExtent:1,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            height: 150,
+            color: Colors.amber[colorCodes[index]],
+            child: Center(child: Text('Entry ${entries[index]}')),
+          );
+        });
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -384,16 +382,44 @@ class MyApp extends StatelessWidget {
 // }
 
   //3.3.7 RotateBox
-  Widget getBody() {
-    return Padding(
-      padding: const EdgeInsets.all(50.0),
-      child: RotatedBox(
-          quarterTurns: 1,
-          child: Container(
-            height: 199,
-            width: 120,
-            color: Colors.blue,
-          )),
+  // Widget getBody() {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(50.0),
+  //     child: RotatedBox(
+  //         quarterTurns: 1,
+  //         child: Container(
+  //           height: 199,
+  //           width: 120,
+  //           color: Colors.blue,
+  //         )),
+  //   );
+  // }
+
+
+//3.5.4.1 pageView
+  Widget getBody(){
+    return PageView(
+      children: [
+        getPage('Page 1'),
+        getPage('Page 2'),
+        getPage('Page 3'),
+        getPage('Page 4'),
+      ],
     );
   }
+
+  Widget getPage(String pageName){
+    return Expanded(
+        child:Container(
+          color: Colors.blue,
+          child: Center(
+            child: Text(
+              pageName,
+              style: const TextStyle(fontSize: 30),
+            ),
+          ),
+        )
+    );
+  }
+
 }

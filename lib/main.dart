@@ -466,58 +466,132 @@ class MyApp extends StatelessWidget {
   // }
 
   //3.5.6.1 CustomScrollView
-  Widget getBody() {
-    final List<String> listViewData = <String>[
-          "Item 1",
-          "Item 2",
-          "Item 3",
-          "Item 4",
-          "Item 5",
-          "Item 6",
-          "Item 7",
-          "Item 8"
-          "Item 9",
-          "Item 10",
-    ];
+  // Widget getBody() {
+  //   final List<String> listViewData = <String>[
+  //         "Item 1",
+  //         "Item 2",
+  //         "Item 3",
+  //         "Item 4",
+  //         "Item 5",
+  //         "Item 6",
+  //         "Item 7",
+  //         "Item 8"
+  //         "Item 9",
+  //         "Item 10",
+  //   ];
+  //
+  //   final List<String> listViewData2 = <String>[
+  //         "List Item A",
+  //         "List Item B",
+  //         "List Item C",
+  //         "List Item D",
+  //         "List Item E",
+  //         "List Item F",
+  //         "List Item G",
+  //         "List Item H",
+  //         "List Item I",
+  //         "List Item J",
+  //   ];
+  //
+  //   return CustomScrollView(
+  //     slivers: <Widget>[
+  //       SliverList(
+  //         delegate:
+  //             SliverChildBuilderDelegate((BuildContext context, int index) {
+  //           return Container(
+  //             height: 50,
+  //             alignment: Alignment.center,
+  //             color: Colors.blueGrey[100],
+  //             child: Text("Item $index"),
+  //           );
+  //         }, childCount: listViewData.length),
+  //       ),
+  //       SliverFixedExtentList(
+  //         itemExtent: 50.0,
+  //         delegate:
+  //             SliverChildBuilderDelegate((BuildContext context, int index) {
+  //           return Container(
+  //             alignment: Alignment.center,
+  //             color: Colors.grey[100],
+  //             child: Text(listViewData2[index]),
+  //           );
+  //         }, childCount: listViewData2.length),
+  //       )
+  //     ],
+  //   );
+  // }
 
-    final List<String> listViewData2 = <String>[
-          "List Item A",
-          "List Item B",
-          "List Item C",
-          "List Item D",
-          "List Item E",
-          "List Item F",
-          "List Item G",
-          "List Item H",
-          "List Item I",
-          "List Item J",
-    ];
-
+  //3.5.6.2 SliverAppBar
+/*  Widget getBody() {
     return CustomScrollView(
       slivers: <Widget>[
-        SliverList(
+        const SliverAppBar(
+          pinned: true,
+          expandedHeight: 250,
+          flexibleSpace: FlexibleSpaceBar(
+            title: Text('Demo'),
+          ),
+        ),
+        SliverGrid(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200,
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 10.0,
+            childAspectRatio: 4.0,
+          ),
           delegate:
               SliverChildBuilderDelegate((BuildContext context, int index) {
             return Container(
-              height: 50,
               alignment: Alignment.center,
-              color: Colors.blueGrey[100],
-              child: Text("Item $index"),
+              color: Colors.teal[100 * (index % 9)],
+              child: Text("Gird Item $index"),
             );
-          }, childCount: listViewData.length),
+          },
+              childCount: 20),
         ),
         SliverFixedExtentList(
-          itemExtent: 50.0,
-          delegate:
-              SliverChildBuilderDelegate((BuildContext context, int index) {
-            return Container(
-              alignment: Alignment.center,
-              color: Colors.grey[100],
-              child: Text(listViewData2[index]),
-            );
-          }, childCount: listViewData2.length),
-        )
+            itemExtent: 50.0,
+            delegate:
+                SliverChildBuilderDelegate((BuildContext context, int index) {
+              return Container(
+                alignment: Alignment.center,
+                color: Colors.lightBlue[100 * (index % 9)],
+                child: Text("List Item $index"),
+              );
+            }),)
+      ],
+    );
+  }*/
+
+  //SliverToBoxAdapter
+  Widget getBody() {
+    return CustomScrollView(
+      slivers: <Widget>[
+        const SliverAppBar(
+          pinned: true,
+          expandedHeight: 250,
+          flexibleSpace: FlexibleSpaceBar(
+            title: Text('Demo'),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Container(
+            height: 200,
+            color: Colors.lightGreen,
+          ),
+        ),
+        SliverFixedExtentList(
+            itemExtent: 50.0,
+            delegate:
+                SliverChildBuilderDelegate((BuildContext context, int index) {
+              return Container(
+                alignment: Alignment.center,
+                color: Colors.lightBlue[100 * (index % 9)],
+                child: Text("List Item $index"),
+              );
+            }),)
       ],
     );
   }
+
 }

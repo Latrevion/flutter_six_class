@@ -397,21 +397,21 @@ class MyApp extends StatelessWidget {
 
 
 //3.5.4.1 pageView
-  Widget getBody(){
-    return PageView(
-      children: [
-        getPage('Page 1'),
-        getPage('Page 2'),
-        getPage('Page 3'),
-        getPage('Page 4'),
-      ],
-    );
-  }
-
+//   Widget getBody(){
+//     return PageView(
+//       children: [
+//         getPage('Page 1'),
+//         getPage('Page 2'),
+//         getPage('Page 3'),
+//         getPage('Page 4'),
+//       ],
+//     );
+//   }
+//
   Widget getPage(String pageName){
     return Expanded(
         child:Container(
-          color: Colors.blue,
+          color: Colors.white,
           child: Center(
             child: Text(
               pageName,
@@ -419,6 +419,36 @@ class MyApp extends StatelessWidget {
             ),
           ),
         )
+    );
+  }
+
+  //3.5.4.2 tabBarView
+  Widget getBody() {
+    return DefaultTabController(length: 3, child:
+      Column(
+        children: [
+          Container(
+            height: 40,
+            color: Colors.black45,
+            child: const TabBar(
+              tabs: [
+                Tab(text:'栏目1'),
+                Tab(text:'栏目2'),
+                Tab(text:'栏目3'),
+              ]
+            )
+          ),
+          Expanded(child:
+          TabBarView(
+            children: [
+              getPage('page 1'),
+              getPage('page 2'),
+              getPage('page 3'),
+            ],
+          )
+          )
+        ]
+      )
     );
   }
 

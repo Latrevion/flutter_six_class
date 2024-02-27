@@ -395,7 +395,6 @@ class MyApp extends StatelessWidget {
   //   );
   // }
 
-
 //3.5.4.1 pageView
 //   Widget getBody(){
 //     return PageView(
@@ -408,48 +407,117 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 //
-  Widget getPage(String pageName){
-    return Expanded(
-        child:Container(
-          color: Colors.white,
-          child: Center(
-            child: Text(
-              pageName,
-              style: const TextStyle(fontSize: 30),
-            ),
-          ),
-        )
-    );
-  }
+//   Widget getPage(String pageName){
+//     return Expanded(
+//         child:Container(
+//           color: Colors.white,
+//           child: Center(
+//             child: Text(
+//               pageName,
+//               style: const TextStyle(fontSize: 30),
+//             ),
+//           ),
+//         )
+//     );
+//   }
 
   //3.5.4.2 tabBarView
+  // Widget getBody() {
+  //   return DefaultTabController(length: 3, child:
+  //     Column(
+  //       children: [
+  //         Container(
+  //           height: 40,
+  //           color: Colors.black45,
+  //           child: const TabBar(
+  //             tabs: [
+  //               Tab(text:'栏目1'),
+  //               Tab(text:'栏目2'),
+  //               Tab(text:'栏目3'),
+  //             ]
+  //           )
+  //         ),
+  //         Expanded(child:
+  //         TabBarView(
+  //           children: [
+  //             getPage('page 1'),
+  //             getPage('page 2'),
+  //             getPage('page 3'),
+  //           ],
+  //         )
+  //         )
+  //       ]
+  //     )
+  //   );
+  // }
+  //
+  // Widget getPage(String pageName){
+  //   return Expanded(
+  //       child:Container(
+  //         color: Colors.white,
+  //         child: Center(
+  //           child: Text(
+  //             pageName,
+  //             style: const TextStyle(fontSize: 30),
+  //           ),
+  //         ),
+  //       )
+  //   );
+  // }
+
+  //3.5.6.1 CustomScrollView
   Widget getBody() {
-    return DefaultTabController(length: 3, child:
-      Column(
-        children: [
-          Container(
-            height: 40,
-            color: Colors.black45,
-            child: const TabBar(
-              tabs: [
-                Tab(text:'栏目1'),
-                Tab(text:'栏目2'),
-                Tab(text:'栏目3'),
-              ]
-            )
-          ),
-          Expanded(child:
-          TabBarView(
-            children: [
-              getPage('page 1'),
-              getPage('page 2'),
-              getPage('page 3'),
-            ],
-          )
-          )
-        ]
-      )
+    final List<String> listViewData = <String>[
+          "Item 1",
+          "Item 2",
+          "Item 3",
+          "Item 4",
+          "Item 5",
+          "Item 6",
+          "Item 7",
+          "Item 8"
+          "Item 9",
+          "Item 10",
+    ];
+
+    final List<String> listViewData2 = <String>[
+          "List Item A",
+          "List Item B",
+          "List Item C",
+          "List Item D",
+          "List Item E",
+          "List Item F",
+          "List Item G",
+          "List Item H",
+          "List Item I",
+          "List Item J",
+    ];
+
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverList(
+          delegate:
+              SliverChildBuilderDelegate((BuildContext context, int index) {
+            return Container(
+              height: 50,
+              alignment: Alignment.center,
+              color: Colors.blueGrey[100],
+              child: Text("Item $index"),
+            );
+          }, childCount: listViewData.length),
+        ),
+        SliverFixedExtentList(
+          itemExtent: 50.0,
+          delegate:
+              SliverChildBuilderDelegate((BuildContext context, int index) {
+            return Container(
+              alignment: Alignment.center,
+              color: Colors.grey[100],
+              child: Text(listViewData2[index]),
+            );
+          }, childCount: listViewData2.length),
+        )
+      ],
     );
   }
-
 }

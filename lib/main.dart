@@ -631,16 +631,71 @@ class MyApp extends StatelessWidget {
   //
 
 //3.5.8 SingleChildScrollView
-Widget getBody(){
-  return SingleChildScrollView(
-    child: Column(
-      children: [
-        Container(color: Colors.yellow,height: 500,alignment: Alignment.center,),
-        Container(color: Colors.green,height: 500,alignment: Alignment.center,),
+//   Widget getBody() {
+  //   return SingleChildScrollView(
+  //     child: Column(
+  //       children: [
+  //         Container(
+  //           color: Colors.yellow,
+  //           height: 500,
+  //           alignment: Alignment.center,
+  //         ),
+  //         Container(
+  //           color: Colors.green,
+  //           height: 500,
+  //           alignment: Alignment.center,
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
-      ],
-    ),
-  );
+  // 3.6.1statelesswidget
+  Widget getBody(){
+    return const MyCard(
+      title: 'Title',
+      subtitle: 'SubTitle xxxxxxxxxxx',
+      icon: Icons.ice_skating_rounded,
+    );
+  }
 }
 
+class MyCard extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final IconData icon;
+
+  const MyCard(
+      {Key? key,
+      required this.title,
+      required this.subtitle,
+      required this.icon})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(padding: EdgeInsets.all(16),
+          child: Row(children: [Icon(icon),const SizedBox(width: 16.0,),
+          Column(crossAxisAlignment: CrossAxisAlignment.start,children:[
+            Text(title),
+            const SizedBox(height: 10,),
+            Text(subtitle),
+
+          ])
+          ],),
+          ),
+        ButtonBar(
+          children: [
+            TextButton(onPressed: (){}, child: const Text('Action 1')),
+            TextButton(onPressed: (){}, child: const Text('Action 2'))
+          ],
+        )
+        ],
+      ),
+    );
+  }
 }

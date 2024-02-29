@@ -564,34 +564,68 @@ class MyApp extends StatelessWidget {
   }*/
 
   //SliverToBoxAdapter
+  // Widget getBody() {
+  //   return CustomScrollView(
+  //     slivers: <Widget>[
+  //       const SliverAppBar(
+  //         pinned: true,
+  //         expandedHeight: 250,
+  //         flexibleSpace: FlexibleSpaceBar(
+  //           title: Text('Demo'),
+  //         ),
+  //       ),
+  //       SliverToBoxAdapter(
+  //         child: Container(
+  //           height: 200,
+  //           color: Colors.lightGreen,
+  //         ),
+  //       ),
+  //       SliverFixedExtentList(
+  //           itemExtent: 50.0,
+  //           delegate:
+  //               SliverChildBuilderDelegate((BuildContext context, int index) {
+  //             return Container(
+  //               alignment: Alignment.center,
+  //               color: Colors.lightBlue[100 * (index % 9)],
+  //               child: Text("List Item $index"),
+  //             );
+  //           }),)
+  //     ],
+  //   );
+  // }
+
+  //3.5.7 NestedScrollView
   Widget getBody() {
-    return CustomScrollView(
-      slivers: <Widget>[
-        const SliverAppBar(
-          pinned: true,
-          expandedHeight: 250,
-          flexibleSpace: FlexibleSpaceBar(
-            title: Text('Demo'),
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          SliverAppBar(
+            title: const Text("ListView appbar"),
+            pinned: true,
+            forceElevated: innerBoxIsScrolled,
           ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            height: 200,
-            color: Colors.lightGreen,
-          ),
-        ),
-        SliverFixedExtentList(
-            itemExtent: 50.0,
-            delegate:
-                SliverChildBuilderDelegate((BuildContext context, int index) {
-              return Container(
-                alignment: Alignment.center,
-                color: Colors.lightBlue[100 * (index % 9)],
-                child: Text("List Item $index"),
-              );
-            }),)
-      ],
+          SliverFixedExtentList(
+              delegate:
+                  SliverChildBuilderDelegate((BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.lightBlue[100 * (index % 9)],
+                  child: Text('List Item $index'),
+                );
+              }, childCount: 9),
+              itemExtent: 50.0)
+        ];
+      },
+      body: ListView.builder(
+          itemCount: 20,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              height: 50,
+              alignment: Alignment.center,
+              color: Colors.lightGreen[100 * (index % 9)],
+              child: Text("Sub List Item $index"),
+            );
+          }),
     );
   }
-
 }

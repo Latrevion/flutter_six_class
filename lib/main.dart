@@ -595,37 +595,52 @@ class MyApp extends StatelessWidget {
   // }
 
   //3.5.7 NestedScrollView
-  Widget getBody() {
-    return NestedScrollView(
-      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-        return <Widget>[
-          SliverAppBar(
-            title: const Text("ListView appbar"),
-            pinned: true,
-            forceElevated: innerBoxIsScrolled,
-          ),
-          SliverFixedExtentList(
-              delegate:
-                  SliverChildBuilderDelegate((BuildContext context, int index) {
-                return Container(
-                  alignment: Alignment.center,
-                  color: Colors.lightBlue[100 * (index % 9)],
-                  child: Text('List Item $index'),
-                );
-              }, childCount: 9),
-              itemExtent: 50.0)
-        ];
-      },
-      body: ListView.builder(
-          itemCount: 20,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 50,
-              alignment: Alignment.center,
-              color: Colors.lightGreen[100 * (index % 9)],
-              child: Text("Sub List Item $index"),
-            );
-          }),
-    );
-  }
+  // Widget getBody() {
+  //   return NestedScrollView(
+  //     headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+  //       return <Widget>[
+  //         SliverAppBar(
+  //           title: const Text("ListView appbar"),
+  //           pinned: true,
+  //           forceElevated: innerBoxIsScrolled,
+  //         ),
+  //         SliverFixedExtentList(
+  //             delegate:
+  //                 SliverChildBuilderDelegate((BuildContext context, int index) {
+  //               return Container(
+  //                 alignment: Alignment.center,
+  //                 color: Colors.lightBlue[100 * (index % 9)],
+  //                 child: Text('List Item $index'),
+  //               );
+  //             }, childCount: 9),
+  //             itemExtent: 50.0)
+  //       ];
+  //     },
+  //     body: ListView.builder(
+  //         itemCount: 20,
+  //         itemBuilder: (BuildContext context, int index) {
+  //           return Container(
+  //             height: 50,
+  //             alignment: Alignment.center,
+  //             color: Colors.lightGreen[100 * (index % 9)],
+  //             child: Text("Sub List Item $index"),
+  //           );
+  //         }),
+  //   );
+  // }
+  //
+
+//3.5.8 SingleChildScrollView
+Widget getBody(){
+  return SingleChildScrollView(
+    child: Column(
+      children: [
+        Container(color: Colors.yellow,height: 500,alignment: Alignment.center,),
+        Container(color: Colors.green,height: 500,alignment: Alignment.center,),
+
+      ],
+    ),
+  );
+}
+
 }

@@ -651,51 +651,85 @@ class MyApp extends StatelessWidget {
   // }
 
   // 3.6.1statelesswidget
+  // Widget getBody(){
+  //   return const MyCard(
+  //     title: 'Title',
+  //     subtitle: 'SubTitle xxxxxxxxxxx',
+  //     icon: Icons.ice_skating_rounded,
+  //   );
+  // }
+
   Widget getBody(){
-    return const MyCard(
-      title: 'Title',
-      subtitle: 'SubTitle xxxxxxxxxxx',
-      icon: Icons.ice_skating_rounded,
-    );
+    return  Counter();
   }
 }
 
-class MyCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final IconData icon;
+// class MyCard extends StatelessWidget {
+//   final String title;
+//   final String subtitle;
+//   final IconData icon;
+//
+//   const MyCard(
+//       {Key? key,
+//       required this.title,
+//       required this.subtitle,
+//       required this.icon})
+//       : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return  Card(
+//       child: Column(
+//         mainAxisSize: MainAxisSize.min,
+//         children: [
+//           Padding(padding: EdgeInsets.all(16),
+//           child: Row(children: [Icon(icon),const SizedBox(width: 16.0,),
+//           Column(crossAxisAlignment: CrossAxisAlignment.start,children:[
+//             Text(title),
+//             const SizedBox(height: 10,),
+//             Text(subtitle),
+//
+//           ])
+//           ],),
+//           ),
+//         ButtonBar(
+//           children: [
+//             TextButton(onPressed: (){}, child: const Text('Action 1')),
+//             TextButton(onPressed: (){}, child: const Text('Action 2'))
+//           ],
+//         )
+//         ],
+//       ),
+//     );
+//   }
+//
+//
+// }
 
-  const MyCard(
-      {Key? key,
-      required this.title,
-      required this.subtitle,
-      required this.icon})
-      : super(key: key);
+  //3.6.2statefulwidget
+
+class Counter extends StatefulWidget{
+  @override
+  _CounterState createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter>{
+  int _counter =0;
+
+  void _incrementCounter(){
+    setState((){
+    _counter++;
+    });
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return  Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(padding: EdgeInsets.all(16),
-          child: Row(children: [Icon(icon),const SizedBox(width: 16.0,),
-          Column(crossAxisAlignment: CrossAxisAlignment.start,children:[
-            Text(title),
-            const SizedBox(height: 10,),
-            Text(subtitle),
-
-          ])
-          ],),
-          ),
-        ButtonBar(
-          children: [
-            TextButton(onPressed: (){}, child: const Text('Action 1')),
-            TextButton(onPressed: (){}, child: const Text('Action 2'))
-          ],
-        )
-        ],
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(title: Text('Counter')),
+      body: Center(
+        child: Text('$_counter')
       ),
+      floatingActionButton: FloatingActionButton(onPressed: _incrementCounter, child: Icon(Icons.add)),
     );
-  }
-}
+
+}}

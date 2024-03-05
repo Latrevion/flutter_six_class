@@ -1,13 +1,27 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
+import 'package:dio/dio.dart';
 
 void main() async{
-  final respose= await fetchPost();
-  final Map<String,dynamic> data=json.decode(respose.body);
-  print('data=> $data');
+  // final respose= await fetchPost();
+  // final Map<String,dynamic> data=json.decode(respose.body);
+  // print('data=> $data');
+
+
+  final response=await Dio().get('https://jsonplaceholder.typicode.com/posts/1');
+  print('response.data=> ${response.data}');
+
+
   runApp(MyApp());
 }
+Future<http.Response>fetchPost(){
+  return http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1'));
+}
+
+
+
+
 
 const descTextStyle = TextStyle(
     color: Colors.black,
@@ -793,7 +807,4 @@ class SunPage extends StatelessWidget {
 
 }
 
-Future<http.Response>fetchPost(){
-  return http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1'));
-}
 

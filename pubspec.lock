@@ -49,6 +49,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.6"
+  dio:
+    dependency: "direct dev"
+    description:
+      name: dio
+      sha256: "5fd6e152bdbc876bc6e81910e16a2bd36e0c68e23d87316e8da67a1ec8fd7b1c"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.0.4"
   fake_async:
     dependency: transitive
     description:

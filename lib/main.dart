@@ -1,6 +1,11 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
 
-void main() {
+void main() async{
+  final respose= await fetchPost();
+  final Map<String,dynamic> data=json.decode(respose.body);
+  print('data=> $data');
   runApp(MyApp());
 }
 
@@ -19,7 +24,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
         title: _title,
         home: SunPage()
         // Scaffold(
@@ -787,3 +792,8 @@ class SunPage extends StatelessWidget {
   }
 
 }
+
+Future<http.Response>fetchPost(){
+  return http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1'));
+}
+

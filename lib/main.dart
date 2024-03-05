@@ -21,11 +21,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: _title,
-        home: Scaffold(
-            appBar: AppBar(
-              title: const Text(_title),
-            ),
-            body: getBody()));
+        home: SunPage()
+        // Scaffold(
+        //     appBar: AppBar(
+        //       title: const Text(_title),
+        //     ),
+        //     // body: getBody()
+        //     body: Center()
+        // )
+    );
   }
 
 /*  Widget getBody(){
@@ -659,10 +663,10 @@ class MyApp extends StatelessWidget {
   //   );
   // }
 
-  Widget getBody(){
-    return  Counter();
-  }
-}
+//   Widget getBody(){
+//     return  Counter();
+//   }
+// }
 
 // class MyCard extends StatelessWidget {
 //   final String title;
@@ -708,28 +712,78 @@ class MyApp extends StatelessWidget {
 
   //3.6.2statefulwidget
 
-class Counter extends StatefulWidget{
-  @override
-  _CounterState createState() => _CounterState();
+// class Counter extends StatefulWidget{
+//   @override
+//   _CounterState createState() => _CounterState();
+// }
+//
+// class _CounterState extends State<Counter>{
+//   int _counter =0;
+//
+//   void _incrementCounter(){
+//     setState((){
+//     _counter++;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context){
+//     return Scaffold(
+//       appBar: AppBar(title: const Text('Counter')),
+//       body: Center(
+//         child: Text('$_counter')
+//       ),
+//       floatingActionButton: FloatingActionButton(onPressed: _incrementCounter, child: Icon(Icons.add)),
+//     );
+//
+// }
 }
 
-class _CounterState extends State<Counter>{
-  int _counter =0;
+class CirclePainter extends CustomPainter{
+  final int circlesCount;
+  final Color color;
+  CirclePainter({ this.circlesCount=3,  this.color=Colors.black });
 
-  void _incrementCounter(){
-    setState((){
-    _counter++;
-    });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center =Offset(size.width/2, size.height/2);
+    final radius =size.width/2;
+
+    final paint = Paint()
+    ..color=color
+    ..strokeWidth=2
+    ..style=PaintingStyle.stroke;
+
+    for(int i=1;i<=circlesCount; i++){
+      canvas.drawCircle(center, radius/circlesCount*i, paint);
+    }
   }
+  @override
+  bool shouldRepaint(CirclePainter oldDelegate) {
+    return oldDelegate.circlesCount != circlesCount ||
+        oldDelegate.color !=color;
+  }
+
+}
+
+class SunPage extends StatelessWidget {
+  const SunPage({Key? key}):super(key: key);
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: const Text('Counter')),
+      appBar: AppBar(title: const Text('the SunPage'),),
       body: Center(
-        child: Text('$_counter')
+        child: SizedBox(
+          width: 200,
+          height: 200,
+          child: CustomPaint(
+            painter: CirclePainter(),
+          ),
+        ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: _incrementCounter, child: Icon(Icons.add)),
     );
+  }
 
-}}
+}
